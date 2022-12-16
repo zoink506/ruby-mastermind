@@ -2,11 +2,14 @@ require 'colorize'
 
 module Display
   def player_input
-    show_colors()
     puts "Please input 4 numbers between 1-6 as the code (eg. 1234)"
     player_code = gets.chomp
-    player_code = player_input() if !validate_input?(player_code)
-    return player_code
+
+    if !validate_input?(player_code)
+      player_code = player_input() 
+    else
+      return validate_input?(player_code)
+    end
   end
 
   def show_colors
@@ -29,10 +32,8 @@ module Display
     arr.each do |char| 
       is_input_valid = false if char.to_i < 1 || char.to_i > 6 
       #puts "#{char} is #{is_input_valid}"
-      if !is_input_valid
-        return is_input_valid
-      end
+      return false if !is_input_valid
     end
-    return is_input_valid
+    return arr.map { |char| char.to_i }
   end
 end
