@@ -2,23 +2,26 @@ class CodeMaker
   def initialize
     # generate a code
     @choices = { 1 => :red, 2 => :yellow, 3 => :cyan, 4 => :green, 5 => :magenta, 6 => :blue }
-    @code = generate_code()
-    puts "computer code: #{@code}"
-  end
-
-  private
-  def generate_code # cyan, yellow, red, green, magenta, blue
-    code = Array.new(4)
-    #code.map { rand(1..6) }
-    code = [1, 1, 5, 3]
   end
 
   public
+  def generate_code # cyan, yellow, red, green, magenta, blue
+    code = Array.new(4) { rand(1..6) }
+    puts "computer code: #{code}"
+    return code
+    #code.map { rand(1..6) }
+    #code = [1, 1, 5, 3]
+  end
+
+  def set_code(code)
+    @code = code
+  end
+
   def get_code
     @code
   end
 
-  def check_code(player_selection) # DOESNT WORK: use 2131, 2431
+  def check_code(player_selection) 
     # returns { hash }
     # :color_position - both position and color are correct
     # :color_not_position - the color is correct but not the position
@@ -31,6 +34,8 @@ class CodeMaker
       if color == @code[index]
         return_hash[:color_position] += 1
         memory_array[index] = true
+        p color
+        p @code[index]
       end
     end
 
@@ -39,6 +44,7 @@ class CodeMaker
         if maker_index != breaker_index && maker_color == breaker_color && memory_array[maker_index] == false
           return_hash[:color_not_position] += 1
           memory_array[maker_index] = true
+          p "#{breaker_color} is the same color, not position"
         end
       end
     end

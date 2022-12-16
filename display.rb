@@ -1,7 +1,7 @@
 require 'colorize'
 
 module Display
-  def player_input
+  def player_input()
     puts "Please input 4 numbers between 1-6 as the code (eg. 1234), or 'exit' to quit the game."
     player_code = gets.chomp
     return 'exit' if player_code == 'exit'
@@ -47,5 +47,15 @@ module Display
     colors_correct[:color_position].times { |i| print "⬤ ".light_black }
     colors_correct[:color_not_position].times { |i| print "⬤ ".white }
     puts "\n"
+  end
+
+  def choose_role
+    puts "Do you want to be the codemaker (1), or the codebreaker? (2)"
+    role = gets.chomp
+    if role != "1" && role != "2"
+      choose_role()
+    else
+      return role
+    end
   end
 end
