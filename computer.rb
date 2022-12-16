@@ -18,8 +18,7 @@ class CodeMaker
   end
 
   def check_code(player_selection)
-    # returns true if the code is equal to the player's choice
-    # if not entirely equal, returns { hash }
+    # returns { hash }
     # :color_position - both position and color are correct
     # :color_not_position - the color is correct but not the position
     return_hash = { color_position: 0, color_not_position: 0 }
@@ -34,7 +33,6 @@ class CodeMaker
       end
 
     end
-    return true if return_hash[:color_position] == 4
     return_hash
   end
 end

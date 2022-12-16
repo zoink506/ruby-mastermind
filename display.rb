@@ -2,8 +2,9 @@ require 'colorize'
 
 module Display
   def player_input
-    puts "Please input 4 numbers between 1-6 as the code (eg. 1234)"
+    puts "Please input 4 numbers between 1-6 as the code (eg. 1234), or 'exit' to quit the game."
     player_code = gets.chomp
+    return 'exit' if player_code == 'exit'
 
     if !validate_input?(player_code)
       player_code = player_input() 
@@ -35,5 +36,16 @@ module Display
       return false if !is_input_valid
     end
     return arr.map { |char| char.to_i }
+  end
+
+  def game_over
+    puts "\nGAME OVER!".green.bold
+  end
+
+  def give_feedback(colors_correct)
+    puts "\nFeedback: "
+    colors_correct[:color_position].times { |i| print "⬤ ".light_black }
+    colors_correct[:color_not_position].times { |i| print "⬤ ".white }
+    puts "\n"
   end
 end
