@@ -5,8 +5,8 @@ require './computer.rb'
 class Game
   include Display
   def initialize
-    @player = Player.new
-    @computer = Computer.new
+    @player = CodeBreaker.new
+    @computer = CodeMaker.new
     round()
   end
 

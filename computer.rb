@@ -1,4 +1,4 @@
-class Computer
+class CodeMaker
   def initialize
     # generate a code
     @choices = { 1 => :red, 2 => :yellow, 3 => :cyan, 4 => :green, 5 => :magenta, 6 => :blue }

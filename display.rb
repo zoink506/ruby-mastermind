@@ -28,7 +28,10 @@ module Display
 
     arr.each do |char| 
       is_input_valid = false if char.to_i < 1 || char.to_i > 6 
-      return is_input_valid
+      #puts "#{char} is #{is_input_valid}"
+      if !is_input_valid
+        return is_input_valid
+      end
     end
     return is_input_valid
   end
