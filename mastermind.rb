@@ -2,6 +2,8 @@ require './game.rb'
 
 # Repeats game indefinitely until user wants to quit
 def play_game
+  # ask the user whether to be the code breaker or code maker
+  
   Game.new
   repeat_game()
 end
