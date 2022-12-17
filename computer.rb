@@ -34,8 +34,8 @@ class CodeMaker
       if color == @code[index]
         return_hash[:color_position] += 1
         memory_array[index] = true
-        p color
-        p @code[index]
+        #p color
+        #p @code[index]
       end
     end
 
@@ -44,7 +44,7 @@ class CodeMaker
         if maker_index != breaker_index && maker_color == breaker_color && memory_array[maker_index] == false
           return_hash[:color_not_position] += 1
           memory_array[maker_index] = true
-          p "#{breaker_color} is the same color, not position"
+          #p "#{breaker_color} is the same color, not position"
         end
       end
     end

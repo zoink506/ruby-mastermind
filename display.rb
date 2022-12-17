@@ -42,11 +42,24 @@ module Display
     puts "\nGAME OVER!".green.bold
   end
 
+  def print_selection(input_code)
+    print "Codebreaker selection: "
+    input_code.each do |color|
+      print "⬤ ".red if color == 1
+      print "⬤ ".yellow if color == 2
+      print "⬤ ".cyan if color == 3
+      print "⬤ ".green if color == 4
+      print "⬤ ".magenta if color == 5
+      print "⬤ ".blue if color == 6
+    end
+    print "\n"
+  end
+
   def give_feedback(colors_correct)
-    puts "\nFeedback: "
+    puts "Feedback: "
     colors_correct[:color_position].times { |i| print "⬤ ".light_black }
     colors_correct[:color_not_position].times { |i| print "⬤ ".white }
-    puts "\n"
+    puts "\n\n"
   end
 
   def choose_role

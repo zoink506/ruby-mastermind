@@ -16,12 +16,14 @@ class Game
     
     if(role == "2")
       @code_maker = CodeMaker.new
-      @code_maker.generate_code()
+      secret_code = @code_maker.generate_code()
+      @code_maker.set_code(secret_code)
       while @number_of_guesses < 12
         show_colors() if @first_round 
         @first_round = false
         player_code = player_input()
         break if player_code == 'exit'
+        print_selection(player_code)
         #p "player_code: #{player_code}"
         code_correct = @code_maker.check_code(player_code) # checks the code is correct
         give_feedback(code_correct)
@@ -36,8 +38,9 @@ class Game
         @code_maker = CodeMaker.new
         @code_maker.set_code(secret_code)
         computer_code = @code_maker.generate_code()
+        print_selection(computer_code)
         code_correct = @code_maker.check_code(computer_code)
-        p code_correct
+        #p code_correct
         give_feedback(code_correct)
         #break if code_correct[:color_position] == 4
         @number_of_guesses += 1
